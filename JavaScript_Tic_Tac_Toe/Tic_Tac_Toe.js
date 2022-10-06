@@ -78,3 +78,25 @@ function placeMark(cell, currentClass) {
 function swapTurns() {
 	isPlayer_O_Turn = !isPlayer_O_Turn
 }
+
+function setBoardHoverClass() {
+  boardElement.classList.remove(PLAYER_X_CLASS)
+  boardElement.classList.remove(PLAYER_O_CLASS)
+
+   if(IsPlayer_O_Turn) {
+
+    boardElement.classList.add(PLAYER_O_CLASS)
+   } else{
+     boardElement.classList.add(PLAYER_X_CLASS)
+   }
+}
+
+function checkWin(currentClass) {
+	return WINNING_COMBITNATIONS.some(combination => {
+		return combination.every(index => {
+			return cellElements[index].classList.contains(currentClass)
+		})
+	})
+}
+   
+
